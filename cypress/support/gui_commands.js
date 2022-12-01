@@ -7,23 +7,28 @@ Cypress.Commands.add('login', (nome, senha) => {
     cy.get('button[type="submit"]').click()
 })
 
-describe('Login em Alura Pic', () => {
+Cypress.Commands.add('novoUsuario', (email, fullName, userName, password) => {
+    cy.contains('p > a', 'Register now').click()
+    cy.get('input[formcontrolname="email"]').type(email)
+    cy.get('input[formcontrolname="fullName"]').type(fullName)
+    cy.get('input[formcontrolname="userName"]').type(userName)
+    cy.get('input[formcontrolname="password"]').type(password)
+    cy.get('small').should('contain.text', 'User available'); 
+    cy.contains('button', 'Register').should('be.visible').click({force:true});
+    cy.contains('ap-vmessage > small', 'User name is required!').should('be.visible')
+    
+})
+Cypress.Commands.add('novoUsuarioLogado', (email, fullName, userName, password) => {
+    cy.contains('p > a', 'Register now').click()
+    cy.get('input[formcontrolname="email"]').type(email)
+    cy.get('input[formcontrolname="fullName"]').type(fullName)
+    cy.get('input[formcontrolname="userName"]').type(userName)
+    cy.get('input[formcontrolname="password"]').type(password)
+    cy.get('small').should('contain.text', 'User available'); 
+    cy.contains('button', 'Register').should('be.visible').click({force:true});
+    cy.contains('ap-vmessage > small', 'User name is required!').should('be.visible')
+    cy.get('input[formcontrolname="userName"]').should('be.visible').type(userName)
+    cy.get('input[formcontrolname="password"]').should('be.visible').type(password)
+    cy.get('button[type="submit"]').click()
+})
 
-    beforeEach(() => {
-        cy.visit('https://alura-fotos.herokuapp.com')
-    });
-
-    it('Login válido', () => {
-
-        cy.contains('a', '(Logout)').should('be.visible')
-
-    })
-    it('Login inválido', () => {
-        cy.get('input[formcontrolname="userName"]').type('flavioax')
-        cy.get('input[formcontrolname="password"]').type('12343')
-        cy.get('button[type="submit"]').click()
-        // cy.contains('a', '(Logout)').should('not.be.visible')
-
-    })
-
-});
