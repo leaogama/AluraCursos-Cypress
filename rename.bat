@@ -1,0 +1,1 @@
+powershell -command "Copy-Item 'cypress/fixtures/usersFixture2.json' -Destination 'cypress/fixtures/usersFixture.json'"

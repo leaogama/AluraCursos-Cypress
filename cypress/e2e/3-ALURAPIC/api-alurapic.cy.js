@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 describe('Buscar fotos e dados', () => {
 
-    it.only('buscar fotos do flavio', () => {
+    it('buscar fotos do flavio', () => {
         console.clear()
         console.log(Cypress.env())
         cy.request({
@@ -24,7 +24,7 @@ describe('Buscar fotos e dados', () => {
 
     it.only('buscar fotos do flavio', () => {
 
-        const tempoEsperado = Math.random() * 3000;
+        const tempoEsperado = Math.floor(Math.random() * 1000) + 1000;
 
         cy.request({
             method: 'GET',

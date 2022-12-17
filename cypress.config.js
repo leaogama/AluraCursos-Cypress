@@ -1,16 +1,16 @@
 const { defineConfig } = require("cypress");
-   
+
 module.exports = defineConfig({
   projectId: 'xm133z',
 
- "reporter": "mochawesome",
-      "reporterOptions": {
-      "reportDir": "cypress/report/mochawesome-report",
-      "overwrite": true,
-      "html": true,
-      "json": false,
-      "timestamp": "mmddyyyy_HHMMss"
-      },    
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "reportDir": "cypress/report/mochawesome-report",
+    "overwrite": true,
+    "html": true,
+    "json": false,
+    "timestamp": "mmddyyyy_HHMMss"
+  },
 
   e2e: {
     setupNodeEvents(on, config) {
@@ -18,7 +18,7 @@ module.exports = defineConfig({
 
     },
     defaultCommandTimeout: 10000,
-
+    baseUrl: "https://alura-fotos.herokuapp.com"
   },
 
 });
