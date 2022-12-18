@@ -21,7 +21,7 @@ describe('Buscar fotos e dados', () => {
             
         })
     })
-
+ 
     it.only('buscar fotos do flavio', () => {
 
         const tempoEsperado = Math.floor(Math.random() * 1000) + 1000;
